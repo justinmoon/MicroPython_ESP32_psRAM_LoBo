@@ -40,3 +40,7 @@ sdkconfig.fw_psram_all_bt
 make_firmwares.sh
 make_firmware_archives.sh
 mncfg_exit.txt
+
+# Python
+##########
+venv

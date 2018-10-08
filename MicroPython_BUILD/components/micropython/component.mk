@@ -43,6 +43,7 @@ FROZEN_MPY_DIR = $(COMPONENT_PATH)/esp32/modules
 # Includes for Qstr&Frozen modules
 #---------------------------------
 ESPCOMP = $(IDF_PATH)/components
+
 MP_EXTRA_INC += -I.
 MP_EXTRA_INC += -I$(COMPONENT_PATH)
 MP_EXTRA_INC += -I$(PROJECT_PATH)/components/curl/include
@@ -55,6 +56,10 @@ MP_EXTRA_INC += -I$(COMPONENT_PATH)/py
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/mp-readline
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/netutils
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/timeutils
+
+MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/modcryptocurrency
+MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/trezor-crypto
+
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/esp32
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/build
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/esp32/libs
@@ -147,6 +152,14 @@ MP_CLEAN_EXTRA += $(COMPONENT_PATH)/genhdr/qstrdefs.generated.h
 # --------------------------------
 include $(COMPONENT_PATH)/py/py.mk
 
+
+# crypto code
+CFLAGS_MOD += -I$(COMPONENT_PATH)/lib/modcryptocurrency
+CFLAGS_MOD += -I$(COMPONENT_PATH)/lib/trezor-crypto
+
+
+
+
 #CFLAGS += -DESP_PLATFORM
 CFLAGS += $(CFLAGS_MOD)
 
@@ -184,6 +197,32 @@ SRC_C =  $(addprefix esp32/,\
 	machine_dht.c \
 	machine_ow.c \
 	)
+
+
+SRC_C += $(addprefix lib/modcryptocurrency/, crc.c modtcc.c)
+SRC_C += $(addprefix lib/trezor-crypto/,\
+                               bignum.c ecdsa.c curves.c secp256k1.c nist256p1.c \
+                               rand.c pbkdf2.c hmac.c \
+                               bip32.c bip39.c base58.c base32.c segwit_addr.c \
+                               address.c script.c \
+                               ripemd160.c sha2.c sha3.c hasher.c \
+                               blake256.c blake2b.c blake2s.c \
+                               aes/aescrypt.c aes/aeskey.c aes/aestab.c aes/aes_modes.c \
+                               ed25519-donna/curve25519-donna-32bit.c \
+                               ed25519-donna/curve25519-donna-helpers.c \
+                               ed25519-donna/modm-donna-32bit.c \
+                               ed25519-donna/ed25519-donna-basepoint-table.c \
+                               ed25519-donna/ed25519-donna-32bit-tables.c \
+                               ed25519-donna/ed25519-donna-impl-base.c \
+                               ed25519-donna/ed25519.c \
+                               ed25519-donna/curve25519-donna-scalarmult-base.c \
+                               ed25519-donna/ed25519-keccak.c \
+                               ed25519-donna/ed25519-sha3.c \
+                               chacha20poly1305/chacha20poly1305.c \
+                               chacha20poly1305/chacha_merged.c \
+                               chacha20poly1305/poly1305-donna.c \
+                               chacha20poly1305/rfc7539.c )
+
 
 ifdef CONFIG_MICROPY_USE_DISPLAY
 SRC_C += esp32/moddisplay.c
