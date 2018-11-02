@@ -281,8 +281,7 @@ extern const struct _mp_obj_module_t mp_module_usocket;
 extern const struct _mp_obj_module_t mp_module_machine;
 extern const struct _mp_obj_module_t mp_module_network;
 extern const struct _mp_obj_module_t mp_module_ymodem;
-extern const struct _mp_obj_module_t mp_module_tcc;
-
+extern const struct _mp_obj_module_t mp_module_trezorcrypto;
 
 #ifdef CONFIG_MICROPY_USE_REQUESTS
 extern const struct _mp_obj_module_t mp_module_requests;
@@ -341,7 +340,7 @@ extern const struct _mp_obj_module_t mp_module_bluetooth;
     { MP_OBJ_NEW_QSTR(MP_QSTR_network),  (mp_obj_t)&mp_module_network }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_ymodem),   (mp_obj_t)&mp_module_ymodem }, \
 	{ MP_OBJ_NEW_QSTR(MP_QSTR_uhashlib), (mp_obj_t)&mp_module_uhashlib }, \
-    { MP_ROM_QSTR(MP_QSTR_tcc), MP_ROM_PTR(&mp_module_tcc) }, \
+    { MP_ROM_QSTR(MP_QSTR_trezorcrypto), MP_ROM_PTR(&mp_module_trezorcrypto) }, \
 	BUILTIN_MODULE_DISPLAY \
 	BUILTIN_MODULE_CURL \
     BUILTIN_MODULE_REQUESTS \

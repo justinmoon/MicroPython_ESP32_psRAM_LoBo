@@ -57,7 +57,8 @@ MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/mp-readline
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/netutils
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/timeutils
 
-MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/modcryptocurrency
+#MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/modcryptocurrency
+MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/trezor-core/embed/extmod/modtrezorcrypto
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/lib/trezor-crypto
 
 MP_EXTRA_INC += -I$(COMPONENT_PATH)/esp32
@@ -154,7 +155,8 @@ include $(COMPONENT_PATH)/py/py.mk
 
 
 # crypto code
-CFLAGS_MOD += -I$(COMPONENT_PATH)/lib/modcryptocurrency
+#CFLAGS_MOD += -I$(COMPONENT_PATH)/lib/modcryptocurrency
+CFLAGS_MOD += -I$(COMPONENT_PATH)/lib/trezor-core/embed/extmod/modtrezorcrypto
 CFLAGS_MOD += -I$(COMPONENT_PATH)/lib/trezor-crypto
 
 
@@ -199,8 +201,9 @@ SRC_C =  $(addprefix esp32/,\
 	)
 
 
-SRC_C += $(addprefix lib/modcryptocurrency/, crc.c modtcc.c)
+SRC_C += $(addprefix lib/trezor-core/embed/extmod/modtrezorcrypto/, crc.c modtrezorcrypto.c)
 SRC_C += $(addprefix lib/trezor-crypto/,\
+		 					   memzero.c \
                                bignum.c ecdsa.c curves.c secp256k1.c nist256p1.c \
                                rand.c pbkdf2.c hmac.c \
                                bip32.c bip39.c base58.c base32.c segwit_addr.c \
