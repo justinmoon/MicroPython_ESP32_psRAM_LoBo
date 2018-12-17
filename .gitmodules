@@ -3,4 +3,4 @@
 	url = https://github.com/Coldcard/modcryptocurrency.git
 [submodule "MicroPython_BUILD/components/micropython/lib/trezor-crypto"]
 	path = MicroPython_BUILD/components/micropython/lib/trezor-crypto
-	url = https://github.com/peter-conalgo/trezor-crypto.git
+	url = https://github.com/justinmoon/trezor-crypto.git
