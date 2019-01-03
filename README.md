@@ -1,5 +1,24 @@
 # MicroPython for ESP32
 
+### Justin's Fork
+
+Get started with `git clone --recursive git@github.com:justinmoon/MicroPython_ESP32_psRAM_LoBo.git`
+
+Update submodules with `git submodule update --recursive --remote`
+
+`cd MicroPython_BUILD`
+
+`./BUILD.sh -v menuconfig`
+* make sure you're python2 interpreter is set correctly within "SDK tool configuration > Python 2 interpreter". On my machine `python` points at Python 3 so I had to update this from `python` to `python2`.
+* Turn on the display > tft module within "MicroPython > Modules > Use Display module > Enable support for SPI TFT displays". Use "Y" to turn on.
+
+`./BUILD.sh -v`
+* `-v` flag increases verbosity. Sometimes these fail and you won't know why without `-v`.
+
+`./BUILD.sh -v flash`
+
+Now it's time for the [buidl-wallet project](https://github.com/justinmoon/buidl-wallet)
+
 # with support for 4MB of psRAM
 
 <br>
