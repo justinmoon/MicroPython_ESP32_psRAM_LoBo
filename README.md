@@ -8,6 +8,8 @@ Update submodules with `git submodule update --recursive --remote`
 
 [Install the pre-requisites](https://github.com/loboris/MicroPython_ESP32_psRAM_LoBo/wiki/build)
 
+[Install this driver](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers)
+
 `cd MicroPython_BUILD`
 
 `./BUILD.sh -v menuconfig`
