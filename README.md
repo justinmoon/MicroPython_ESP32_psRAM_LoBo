@@ -6,6 +6,8 @@ Get started with `git clone --recursive git@github.com:justinmoon/MicroPython_ES
 
 Update submodules with `git submodule update --recursive --remote`
 
+[Install the pre-requisites](https://github.com/loboris/MicroPython_ESP32_psRAM_LoBo/wiki/build)
+
 `cd MicroPython_BUILD`
 
 `./BUILD.sh -v menuconfig`
